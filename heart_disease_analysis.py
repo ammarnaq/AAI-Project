@@ -126,11 +126,9 @@ print("  Saved: plots/03_categorical_vs_target.png")
 # --- Plot 4: Correlation Heatmap ---
 # Encode categorical columns temporarily for correlation
 df_encoded = df.copy()
-label_encoders = {}
 for col in df.select_dtypes(include='object').columns:
     le = LabelEncoder()
     df_encoded[col] = le.fit_transform(df[col])
-    label_encoders[col] = le
 
 fig, ax = plt.subplots(figsize=(12, 9))
 corr = df_encoded.corr()
